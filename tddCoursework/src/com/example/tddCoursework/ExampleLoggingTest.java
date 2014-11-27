@@ -9,6 +9,7 @@ public class ExampleLoggingTest extends AbstractLoggingJUnitTest {
 	@Test
 	public void test() {
 		fail("Not yet implemented");
+		assert true;
 	}
 	
 	@Test
