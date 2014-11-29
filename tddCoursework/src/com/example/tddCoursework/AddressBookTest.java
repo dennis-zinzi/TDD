@@ -1,7 +1,6 @@
 package com.example.tddCoursework;
 
 import static org.junit.Assert.*;
-
 import org.junit.*;
 
 public class AddressBookTest extends AbstractLoggingJUnitTest{
@@ -66,7 +65,7 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 			}
 		}
 	}
-	
+
 	@Test 
 	public void IDIsUnchangeable(){
 		int id = ab.entries[0].ID;
@@ -75,9 +74,33 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 		assertEquals("ID modifieable",id, ab.entries[0].ID);
 	}
 
-	//	@Test
-	//	public void makesListOfEntries(){
-	//		fail("Not yet implemented");
-	//	}
+	@Test
+	public void makesListOfEntries(){
+		ab.makeList();
+	}
+	
+	@Test
+	public void testSearchByName(){
+		assertNotEquals(0, ab.searchByName("Dennis Zinzi").size());
+		assertEquals(0, ab.searchByName("John Gordon").size());
+	}
+	
+	@Test
+	public void testSearchByAddress(){
+		assertNotEquals(0, ab.searchByAddress("1 Fake Street").size());
+		assertEquals(0, ab.searchByAddress("10 Churchill Gardens").size());
+	}
+	
+	@Test
+	public void testSearchByPhoneNumber(){
+		assertNotEquals(0, ab.searchByPhoneNumber(1026680125).size());
+		assertEquals(0, ab.searchByPhoneNumber(1126580905).size());
+	}
+	
+	@Test
+	public void testSearchByBirthday(){
+		assertNotEquals(0, ab.searchByBirthday("05/02/1998").size());
+		assertEquals(0, ab.searchByBirthday("15/12/1978").size());
+	}
 
 }
