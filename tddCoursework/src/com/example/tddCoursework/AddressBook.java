@@ -3,7 +3,7 @@ package com.example.tddCoursework;
 import java.util.*;
 
 public class AddressBook {
-	Entry[] entries;
+	private Entry[] entries;
 
 	public AddressBook(){
 		entries = new Entry[100];
@@ -23,11 +23,11 @@ public class AddressBook {
 		int i=0;
 		while(i<entries.length && entries[i]!=null){
 			System.out.println("Entry "+(i+1)+":");
-			System.out.println("\tName: "+entries[i].name);
-			System.out.println("\tAddress: "+entries[i].address);
-			System.out.println("\tPhone Number: "+entries[i].phoneNumber);
-			System.out.println("\tBirthday: "+entries[i].birthday);
-			System.out.println("\tID: "+entries[i].ID);
+			System.out.println("\tName: "+entries[i].getName());
+			System.out.println("\tAddress: "+entries[i].getAddress());
+			System.out.println("\tPhone Number: "+entries[i].getPhoneNumber());
+			System.out.println("\tBirthday: "+entries[i].getBirthday());
+			System.out.println("\tID: "+entries[i].getID());
 			i++;
 		}
 	}
@@ -36,12 +36,12 @@ public class AddressBook {
 		List<Entry> matches = new ArrayList<Entry>();
 		int i=0;
 		while(i<entries.length && entries[i]!=null){
-			if(entries[i].name.equals(name)){
-				System.out.println("\tName: "+entries[i].name);
-				System.out.println("\tAddress: "+entries[i].address);
-				System.out.println("\tPhone Number: "+entries[i].phoneNumber);
-				System.out.println("\tBirthday: "+entries[i].birthday);
-				System.out.println("\tID: "+entries[i].ID);
+			if(entries[i].getName().equals(name)){
+				System.out.println("\tName: "+entries[i].getName());
+				System.out.println("\tAddress: "+entries[i].getAddress());
+				System.out.println("\tPhone Number: "+entries[i].getPhoneNumber());
+				System.out.println("\tBirthday: "+entries[i].getBirthday());
+				System.out.println("\tID: "+entries[i].getID());
 				matches.add(entries[i]);
 			}
 			i++;
@@ -56,12 +56,12 @@ public class AddressBook {
 		List<Entry> matches = new ArrayList<Entry>();
 		int i=0;
 		while(i<entries.length && entries[i]!=null){
-			if(entries[i].address.equals(address)){
-				System.out.println("\tName: "+entries[i].name);
-				System.out.println("\tAddress: "+entries[i].address);
-				System.out.println("\tPhone Number: "+entries[i].phoneNumber);
-				System.out.println("\tBirthday: "+entries[i].birthday);
-				System.out.println("\tID: "+entries[i].ID);
+			if(entries[i].getAddress().equals(address)){
+				System.out.println("\tName: "+entries[i].getName());
+				System.out.println("\tAddress: "+entries[i].getAddress());
+				System.out.println("\tPhone Number: "+entries[i].getPhoneNumber());
+				System.out.println("\tBirthday: "+entries[i].getBirthday());
+				System.out.println("\tID: "+entries[i].getID());
 				matches.add(entries[i]);
 			}
 			i++;
@@ -76,12 +76,12 @@ public class AddressBook {
 		List<Entry> matches = new ArrayList<Entry>();
 		int i=0;
 		while(i<entries.length && entries[i]!=null){
-			if(entries[i].phoneNumber == phoneNumber){
-				System.out.println("\tName: "+entries[i].name);
-				System.out.println("\tAddress: "+entries[i].address);
-				System.out.println("\tPhone Number: "+entries[i].phoneNumber);
-				System.out.println("\tBirthday: "+entries[i].birthday);
-				System.out.println("\tID: "+entries[i].ID);
+			if(entries[i].getPhoneNumber() == phoneNumber){
+				System.out.println("\tName: "+entries[i].getName());
+				System.out.println("\tAddress: "+entries[i].getAddress());
+				System.out.println("\tPhone Number: "+entries[i].getPhoneNumber());
+				System.out.println("\tBirthday: "+entries[i].getBirthday());
+				System.out.println("\tID: "+entries[i].getID());
 				matches.add(entries[i]);
 			}
 			i++;
@@ -96,12 +96,12 @@ public class AddressBook {
 		List<Entry> matches = new ArrayList<Entry>();
 		int i=0;
 		while(i<entries.length && entries[i]!=null){
-			if(entries[i].birthday.equals(birthday)){
-				System.out.println("\tName: "+entries[i].name);
-				System.out.println("\tAddress: "+entries[i].address);
-				System.out.println("\tPhone Number: "+entries[i].phoneNumber);
-				System.out.println("\tBirthday: "+entries[i].birthday);
-				System.out.println("\tID: "+entries[i].ID);
+			if(entries[i].getBirthday().equals(birthday)){
+				System.out.println("\tName: "+entries[i].getName());
+				System.out.println("\tAddress: "+entries[i].getAddress());
+				System.out.println("\tPhone Number: "+entries[i].getPhoneNumber());
+				System.out.println("\tBirthday: "+entries[i].getBirthday());
+				System.out.println("\tID: "+entries[i].getID());
 				matches.add(entries[i]);
 			}
 			i++;
@@ -110,6 +110,10 @@ public class AddressBook {
 			System.out.println("Entry with Birthday "+birthday+" not found.");
 		}
 		return matches;
+	}
+	
+	public Entry[] getEntries(){
+		return entries;
 	}
 
 

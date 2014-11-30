@@ -29,7 +29,7 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 
 	@Test
 	public void hasEntries(){
-		assertNotNull("Entries array not initialized", ab.entries);
+		assertNotNull("Entries array not initialized", ab.getEntries());
 	}
 
 
@@ -40,27 +40,27 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 
 	@Test
 	public void createEntry(){
-		assertNotNull("Name not initialized", e.name);
-		assertNotNull("Address not initialized", e.address);
-		assertNotEquals("Phone number not assigned", 0, e.phoneNumber);
-		assertNotNull("Birthday not initialized", e.birthday);
-		assertTrue("ID not assigned", e.ID>=0);
+		assertNotNull("Name not initialized", e.getName());
+		assertNotNull("Address not initialized", e.getAddress());
+		assertNotEquals("Phone number not assigned", 0, e.getPhoneNumber());
+		assertNotNull("Birthday not initialized", e.getBirthday());
+		assertNotNull("ID not assigned", e.getID());
 	}
 
 	@Test
 	public void canAddEntry(){
 		ab.addEntry(e);
 		ab.addEntry(new Entry("Siddharth Singh", "1 Maple Road", 02525163514, "04/09/1987"));
-		assertTrue(ab.entries[0].equals(e));
+		assertTrue(ab.getEntries()[0].equals(e));
 	}
 
 	@Test
 	public void IDIsUnique(){
-		for(int i=0;i<ab.entries.length;i++){
-			if(ab.entries[i]!=null){
-				int check = ab.entries[i].ID;
+		for(int i=0;i<ab.getEntries().length;i++){
+			if(ab.getEntries()[i]!=null){
+				String check = ab.getEntries()[i].getID();
 				for(int y=0;y<i;y++){
-					assertFalse("ID not unique", ab.entries[y].ID==check);
+					assertFalse("ID not unique", ab.getEntries()[y].getID()==check);
 				}
 			}
 		}
@@ -68,10 +68,10 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 
 	@Test 
 	public void IDIsUnchangeable(){
-		int id = ab.entries[0].ID;
+		String id = ab.getEntries()[0].getID();
 		//Causes compilation problem so proves it's final thus theoretically passing the test
-		//ab.entries[0].ID = 1;
-		assertEquals("ID modifieable",id, ab.entries[0].ID);
+		//ab.getEntries()[0].ID = 1;
+		assertEquals("ID modifieable",id, ab.getEntries()[0].getID());
 	}
 
 	@Test
@@ -101,6 +101,34 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 	public void testSearchByBirthday(){
 		assertNotEquals(0, ab.searchByBirthday("05/02/1998").size());
 		assertEquals(0, ab.searchByBirthday("15/12/1978").size());
+	}
+	
+	@Test
+	public void canChangeName(){
+		String name = ab.getEntries()[0].getName();
+		ab.getEntries()[0].setName("Denzel Smith");
+		assertNotEquals("Name not changed", name, ab.getEntries()[0].getName());
+	}
+	
+	@Test
+	public void canChangeAddress(){
+		String address = ab.getEntries()[0].getAddress();
+		ab.getEntries()[0].setAddress("10 Queen's Road");
+		assertNotEquals("Address not changed", address, ab.getEntries()[0].getAddress());
+	}
+	
+	@Test
+	public void canChangePhoneNumber(){
+		int phoneNumber = ab.getEntries()[0].getPhoneNumber();
+		ab.getEntries()[0].setPhoneNumber(1227590908);
+		assertNotEquals("Phone Number not changed", phoneNumber, ab.getEntries()[0].getPhoneNumber());
+	}
+	
+	@Test
+	public void canChangeBirthday(){
+		String birthday = ab.getEntries()[0].getBirthday();
+		ab.getEntries()[0].setBirthday("12/03/1995");
+		assertNotEquals("Birthday not changed", birthday, ab.getEntries()[0].getBirthday());
 	}
 
 }
