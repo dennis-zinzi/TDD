@@ -1,6 +1,5 @@
 package com.example.tddCoursework;
 
-import java.util.*;
 
 public class Entry {
 	//Instance variables for Entry
@@ -8,7 +7,11 @@ public class Entry {
 	private String address;
 	private int phoneNumber;
 	private String birthday;
-	private final UUID ID = UUID.randomUUID(); 
+	
+	//Variable to keep count of previous Entries to make sure ID is unique for each one
+	private static int numID;
+	//Unique immutable ID
+	private final int ID = numID;
 	
 	/**
 	 * Default Entry Constructor
@@ -18,6 +21,7 @@ public class Entry {
 		address = "";
 		phoneNumber = 1;
 		birthday = "01/01/1900";
+		numID++;
 	}
 	
 	/**
@@ -32,6 +36,7 @@ public class Entry {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.birthday = birthday;
+		numID++;
 	}
 	
 	/**
@@ -106,7 +111,7 @@ public class Entry {
 	 * Returns Entry's ID
 	 * @return - Entry's ID
 	 */
-	public String getID(){
-		return ID.toString();
+	public int getID(){
+		return ID;
 	}
 }
