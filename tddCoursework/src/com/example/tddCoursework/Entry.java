@@ -1,5 +1,7 @@
 package com.example.tddCoursework;
 
+import java.util.Random;
+
 
 public class Entry {
 	//Instance variables for Entry
@@ -8,21 +10,9 @@ public class Entry {
 	private int phoneNumber;
 	private String birthday;
 	
-	//Variable to keep count of previous Entries to make sure ID is unique for each one
-	private static int numID;
 	//Unique immutable ID
-	private final int ID = numID;
+	private int ID;
 	
-	/**
-	 * Default Entry Constructor
-	 */
-	public Entry(){
-		name = "";
-		address = "";
-		phoneNumber = 1;
-		birthday = "01/01/1900";
-		numID++;
-	}
 	
 	/**
 	 * Entry Constructor
@@ -36,7 +26,10 @@ public class Entry {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.birthday = birthday;
-		numID++;
+		
+		//Assign random number to unique ID
+		Random num = new Random();
+		ID = num.nextInt(1000);
 	}
 	
 	/**

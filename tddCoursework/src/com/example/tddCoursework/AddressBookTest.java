@@ -64,9 +64,13 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 	public void createEntry(){
 		//Assert fields of of an Entry are being initialized
 		assertNotNull("Name not initialized", e.getName());
+		assertEquals("Name not assigned correctly", "Dennis Zinzi", e.getName());
 		assertNotNull("Address not initialized", e.getAddress());
+		assertEquals("Address not assigned correctly", "1 Fake Street", e.getAddress());
 		assertNotEquals("Phone number not assigned", 0, e.getPhoneNumber());
+		assertEquals("Phone number not assigned correctly", 07514362475, e.getPhoneNumber());
 		assertNotNull("Birthday not initialized", e.getBirthday());
+		assertEquals("Birthday not assigned correctly", "14/05/1993", e.getBirthday());
 		assertNotNull("ID not assigned", e.getID());
 	}
 
@@ -114,7 +118,7 @@ public class AddressBookTest extends AbstractLoggingJUnitTest{
 		//ab.getEntries()[0].ID = 1;
 		
 		//Assert ID value has not changed 
-		assertEquals("ID modifieable",id, ab.getEntries()[0].getID());
+		assertEquals("ID not modifiable",id, ab.getEntries()[0].getID());
 	}
 
 	/**
